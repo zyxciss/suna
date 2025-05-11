@@ -2059,4 +2059,4 @@ if __name__ == '__main__':
         asyncio.run(test_browser_api_2())
     else:
         print("Starting API server")
-        uvicorn.run("browser_api:api_app", host="0.0.0.0", port=8002)
+        uvicorn.run("browser_api:api_app", host="0.0.0.0", port=8000)

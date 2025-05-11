@@ -128,15 +128,11 @@ app.add_middleware(
 )
 
 # Include the agent router with a prefix
-app.include_router(agent_api.router, prefix="/api")
+app.include_router(agent_api.router)
+app.include_router(sandbox_api.router)
+app.include_router(billing_api.router)
 
-# Include the sandbox router with a prefix
-app.include_router(sandbox_api.router, prefix="/api")
-
-# Include the billing router with a prefix
-app.include_router(billing_api.router, prefix="/api")
-
-@app.get("/api/health")
+@app.get("/health")
 async def health_check():
     """Health check endpoint to verify API is working."""
     logger.info("Health check endpoint called")
@@ -151,11 +147,11 @@ if __name__ == "__main__":
     
     workers = 2
     
-    logger.info(f"Starting server on 0.0.0.0:8000 with {workers} workers")
+    logger.info(f"Starting server on 0.0.0.0:8001 with {workers} workers")
     uvicorn.run(
         "api:app", 
         host="0.0.0.0", 
-        port=8000,
+        port=8001,
         workers=workers,
         # reload=True
     )

@@ -6,13 +6,13 @@ services:
       dockerfile: ${DOCKERFILE:-Dockerfile}
       args:
         TARGETPLATFORM: ${TARGETPLATFORM:-linux/amd64}
-    image: kortix/suna:0.1.2
+    image: kortix/suna:0.1
     ports:
       - "6080:6080"  # noVNC web interface
       - "5901:5901"  # VNC port
       - "9222:9222"  # Chrome remote debugging port
       - "8000:8000"  # API server port
-      - "8080:8080"  # HTTP server port
+      - "8081:8080"  # HTTP server port
     environment:
       - ANONYMIZED_TELEMETRY=${ANONYMIZED_TELEMETRY:-false}
       - CHROME_PATH=/usr/bin/google-chrome
